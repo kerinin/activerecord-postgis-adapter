@@ -61,6 +61,10 @@ module ActiveRecord
           end
         end
 
+        def explain(arel, binds = [])
+          sql = "EXPLAIN #{to_sql(arel, binds)}"
+          puts exec_query(sql, 'EXPLAIN', binds)
+        end
 
         def set_rgeo_factory_settings(factory_settings_)
           @rgeo_factory_settings = factory_settings_
